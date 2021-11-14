@@ -5,7 +5,7 @@ import type { Thing } from '../../types';
 import { useNavigate } from 'react-router-dom';
 
 export default function Stuff(): JSX.Element {
-  const navigate = useNavigate();
+  const nav = useNavigate();
   const { chosenThing } = useParams();
   const [thing, setThings] = useState<Thing | null>(null);
 
@@ -23,7 +23,19 @@ export default function Stuff(): JSX.Element {
 
   function navigateBack(event: { preventDefault: () => void }) {
     event.preventDefault();
-    navigate('/');
+    nav('/');
+  }
+
+  async function deleteItem() {
+    if (thing)
+      await fetch(`https://json-server.neuefische.de/stuff/${thing.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: null,
+      });
+    nav('/');
   }
 
   if (thing) {
@@ -37,6 +49,7 @@ export default function Stuff(): JSX.Element {
           description={thing.description}
           cardTags={thing.categories}
         ></CardDetailed>
+        <button onClick={deleteItem}>Delete</button>
       </>
     );
   } else {
