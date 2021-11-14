@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Stuff from './pages/Stuff/Stuff';
 import Dashboard from './pages/Dashboard/Dashboard';
-import AddForm from './pages/Dashboard';
 
 function App(): JSX.Element {
   return (
