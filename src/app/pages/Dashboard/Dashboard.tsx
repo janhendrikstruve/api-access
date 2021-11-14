@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../..//components/Card/Card';
 import type { Thing } from '../../types';
-import useFetch from '../../components/hooks/useFetch';
+import useFetch from '../../hooks/useFetch';
 
 export default function Dashboard(): JSX.Element {
   const things = useFetch<Thing[]>('https://json-server.neuefische.de/stuff');
