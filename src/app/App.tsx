@@ -12,7 +12,8 @@ function App(): JSX.Element {
         <Route path="/Stuff">
           <Route path=":chosenThing" element={<Stuff />} />
         </Route>
-        {/* <Route path="/add" element={<AddForm />} /> */}
+        <Route path="/add" element={<AddForm />} />
+
       </Routes>
     </BrowserRouter>
   );
